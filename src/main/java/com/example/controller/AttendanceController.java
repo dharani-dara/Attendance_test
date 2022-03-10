@@ -71,7 +71,7 @@ public class AttendanceController {
 	 * //((JavaMailSender) msg).send(mail); return "mail sent successfully"; }
 	 */
 	@GetMapping("report")
-	public String report(@RequestParam String name, String startDate, String endDate) {
+	public String report(@RequestParam String name,@RequestParam String startDate,@RequestParam String endDate) {
 		System.out.println(mailID);
 		Attendance attendancelist1 = attendanceService.getAttendance(name, startDate, endDate).get();
 		List<Attendance> attendancelist = new ArrayList<>();
