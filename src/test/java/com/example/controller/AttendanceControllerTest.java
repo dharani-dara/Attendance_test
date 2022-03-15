@@ -42,11 +42,11 @@ class AttendanceControllerTest {
 	@Test
 	void testAddAttendance() throws Exception {
 		Attendance attendance = new Attendance();
-		attendance.setDate("22-11-2021");
+		attendance.setDate("27-11-2022");
 		attendance.setId(102L);
 		attendance.setStatus(true);
-		attendance.setStudentClass("class");
-		attendance.setStudentName("name");
+		attendance.setStudentClass("10th");
+		attendance.setStudentName("tyisnk");
 
 		String inputJson = AttendanceControllerTest.mapToJson(attendance);
 		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/api/add")
@@ -59,7 +59,7 @@ class AttendanceControllerTest {
 	void testGetAttendanceLong() throws Exception {
 
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.get("/api/getAttendance/2").contentType(MediaType.APPLICATION_JSON_VALUE))
+				MockMvcRequestBuilders.get("/api/getAttendance/23").contentType(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
@@ -93,10 +93,10 @@ class AttendanceControllerTest {
 		Attendance attendance = new Attendance();
 		attendance.setStatus(true);
 		attendance.setStudentClass("10th");
-		attendance.setStudentName("name2");
+		attendance.setStudentName("abcd");
 		String inputJson = AttendanceControllerTest.mapToJson(attendance);
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.put("/api/2").contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
+				MockMvcRequestBuilders.put("/api/23").contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson))
 				.andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
@@ -105,7 +105,7 @@ class AttendanceControllerTest {
 	@Test
 	void testReport() throws Exception {
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.get("/api/report?endDate=2022-03-02&name=sajka&startDate=2022-03-02").contentType(MediaType.APPLICATION_JSON_VALUE))
+				MockMvcRequestBuilders.get("/api/report?endDate=22-11-2022&name=ahdbje&startDate=22-11-2022").contentType(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
@@ -114,7 +114,7 @@ class AttendanceControllerTest {
 	@Test
 	void testGetByID() throws Exception {
 		MvcResult result = mockMvc.perform(
-				MockMvcRequestBuilders.get("/api/getByID/2").contentType(MediaType.APPLICATION_JSON_VALUE))
+				MockMvcRequestBuilders.get("/api/getByID/23").contentType(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
 
 		assertEquals(200, result.getResponse().getStatus());
